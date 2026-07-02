@@ -248,3 +248,13 @@ h3 { font-size: 20px; }
 .qa__body li { margin-bottom: 4px; }
 .qa__body strong { color: var(--color-ink); }
 .qa summary { font-size: 17px; line-height: 1.5; }
+/* 60 秒自测 */
+.quiz { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 28px; }
+.quiz__progress { font-size: 13px; color: var(--color-primary); font-weight: 700; margin-bottom: 10px; letter-spacing: .05em; }
+.quiz__q h3 { margin-bottom: 18px; font-size: 20px; }
+.quiz__opts { display: grid; gap: 10px; }
+.quiz__opt { text-align: left; padding: 14px 18px; border: 1.5px solid var(--color-border); border-radius: 12px; background: transparent; font-size: 16px; cursor: pointer; transition: .15s; font-family: inherit; color: var(--color-ink); }
+.quiz__opt:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+.quiz__result { text-align: center; }
+.quiz__result p { font-size: 17px; line-height: 1.8; color: var(--color-ink-soft); }
+.quiz__restart { display: block; margin: 14px auto 0; background: none; border: none; color: var(--color-ink-soft); font-size: 14px; cursor: pointer; text-decoration: underline; font-family: inherit; }

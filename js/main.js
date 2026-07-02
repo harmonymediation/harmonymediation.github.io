@@ -91,3 +91,34 @@ if (form) {
     }
   });
 }
+
+// 60 秒自测（文案取自页面 data-attributes，中英共用）
+(function quiz() {
+  const box = document.getElementById('quizBox');
+  if (!box) return;
+  const d = box.dataset;
+  const qs = [1,2,3,4].map(i => ({ q: d['q'+i], answers: d['q'+i+'a'].split('|') }));
+  let step = 0, score = 0;
+  function render() {
+    if (step < qs.length) {
+      const { q, answers } = qs[step];
+      box.innerHTML = '<div class="quiz__q"><div class="quiz__progress">' + (step+1) + ' / ' + qs.length +
+        '</div><h3>' + q + '</h3><div class="quiz__opts">' +
+        answers.map((a,i) => '<button class="quiz__opt" data-i="'+i+'">'+a+'</button>').join('') + '</div></div>';
+      box.querySelectorAll('.quiz__opt').forEach(b => b.addEventListener('click', () => {
+        // 第1题：愿意沟通=2分 不确定=1 拒绝=0；其余题：任何选择都说明调解价值，按贴合度 2/1/1
+        const i = +b.dataset.i;
+        score += step === 0 ? (2 - i) : (i === 0 ? 2 : 1);
+        step++; render();
+      }));
+    } else {
+      const r = score >= 7 ? d.rHigh : score >= 4 ? d.rMid : d.rLow;
+      box.innerHTML = '<div class="quiz__result"><p>' + r + '</p>' +
+        '<a href="#contact" class="btn btn--primary btn--lg" style="margin-top:16px;">' + d.cta + '</a>' +
+        '<button class="quiz__restart">' + d.restart + '</button></div>';
+      box.querySelector('.quiz__restart').addEventListener('click', () => { step = 0; score = 0; render(); });
+      if (window.gtag) gtag('event', 'quiz_complete', { event_category: 'engagement' });
+    }
+  }
+  render();
+})();
