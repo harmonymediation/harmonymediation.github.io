@@ -231,3 +231,11 @@ h3 { font-size: 20px; }
   .steps { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
 }
+
+/* 专业图标与卡片居中（2026-07 改版）*/
+.pain { text-align: center; }
+.pain .ic { width: 52px; height: 52px; border-radius: 13px; background: var(--color-primary-light); color: var(--color-primary); display: grid; place-items: center; margin: 0 auto 14px; }
+.tcard { text-align: center; }
+.tcard .card__ic { margin-left: auto; margin-right: auto; }
+.card__ic svg, .pain .ic svg { width: 26px; height: 26px; }
+.hero__trust svg { width: 15px; height: 15px; vertical-align: -2.5px; margin-right: 5px; color: var(--color-primary); }
