@@ -1,0 +1,19 @@
+# Netlify 一键部署配置（静态站，无需构建）
+# 用法：登录 netlify.com → Add new site → 拖拽本文件夹，或连接 Git 仓库即可上线。
+[build]
+  publish = "."
+  command = ""
+
+# 强制 HTTPS 安全响应头
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 友好 URL：/en 指向英文站
+[[redirects]]
+  from = "/en"
+  to = "/en/"
+  status = 301
