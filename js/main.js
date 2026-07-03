@@ -49,6 +49,8 @@ function showSuccess() {
   if (ok) ok.style.display = 'block';
   trackLead();
   form.reset();
+  // 跳转到确认页（Google Ads / GA 以该页面 URL 记录转化）
+  setTimeout(() => { location.href = 'thanks.html'; }, 400);
 }
 if (form) {
   form.addEventListener('submit', async (e) => {
